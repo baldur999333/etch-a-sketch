@@ -12,7 +12,6 @@ function populateGrid(size){
         item.style.width = "" + (container.offsetWidth / size) + "px";
         item.style.height = "" + (container.offsetWidth / size) + "px";
         item.classList.add("item");
-        item.classList.add("initial");
         container.appendChild(item);
         
         item.addEventListener("mouseover", (e)=> {
@@ -20,6 +19,10 @@ function populateGrid(size){
             const g = randomInt(256);
             const b = randomInt(256);
             item.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            const opacityOld = window.getComputedStyle(item).opacity;
+            let opacityNew = Math.max(0, opacityOld-0.1);
+            console.log(opacityOld);
+            item.style.opacity = ""+opacityNew;
         })
     }
 }
