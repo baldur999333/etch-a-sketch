@@ -1,4 +1,8 @@
 let size = 16;
+
+function randomInt(max){
+    return Math.floor(Math.random() * max);
+}
 function populateGrid(size){
     const container = document.querySelector(".container");
     console.log(container.offsetWidth);
@@ -7,14 +11,15 @@ function populateGrid(size){
         const item = document.createElement("div");
         item.style.width = "" + (container.offsetWidth / size) + "px";
         item.style.height = "" + (container.offsetWidth / size) + "px";
-
         item.classList.add("item");
         item.classList.add("initial");
         container.appendChild(item);
         
         item.addEventListener("mouseover", (e)=> {
-            item.classList.add("hovered");
-            item.classList.remove("initial");
+            const r = randomInt(256);
+            const g = randomInt(256);
+            const b = randomInt(256);
+            item.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         })
     }
 }
